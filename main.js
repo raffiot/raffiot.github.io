@@ -82,30 +82,30 @@ function configNeighbors(){
 
 function showInfo(){
 	s.bind('clickNode', function(e) {
-	currentNode = e.data.node;
-    var nodeId = currentNode.id;
-	var nodeActivity = currentNode.user_activity[current_activity_index][0];
-	var nodeCategory = e.data.node.attributes.category;
-	var div = document.querySelector("div#info");
-	div.innerHTML = '';
+		currentNode = e.data.node;
+		var nodeId = currentNode.id;
+		var nodeActivity = currentNode.user_activity[current_activity_index][0];
+		var nodeCategory = e.data.node.attributes.category;
+		var div = document.querySelector("div#info");
+		div.innerHTML = '';
 
-	var nodeIDHTML = document.createElement("h5");
-    var text = document.createTextNode(nodeId);
-	nodeIDHTML.id ="nodeId";
-    nodeIDHTML.appendChild(text);
-    div.appendChild(nodeIDHTML);
-	
-	var nodeDateHTML = document.createElement("h5");
-	var text2 = document.createTextNode("user activity on "+currentDate+": "+nodeActivity);
-	nodeDateHTML.id = "nodeDate";
-	nodeDateHTML.appendChild(text2);
-	div.appendChild(nodeDateHTML);
-	
-	var nodeCategoryHTML = document.createElement("h5");
-	var text3 = document.createTextNode("category "+nodeCategory);
-	nodeCategoryHTML.id="nodeCategory";
-	nodeCategoryHTML.appendChild(text3);
-	div.appendChild(nodeCategoryHTML);
+		var nodeIDHTML = document.createElement("h5");
+		var text = document.createTextNode(nodeId);
+		nodeIDHTML.id ="nodeId";
+		nodeIDHTML.appendChild(text);
+		div.appendChild(nodeIDHTML);
+		
+		var nodeDateHTML = document.createElement("h5");
+		var text2 = document.createTextNode("user activity on "+currentDate+": "+nodeActivity);
+		nodeDateHTML.id = "nodeDate";
+		nodeDateHTML.appendChild(text2);
+		div.appendChild(nodeDateHTML);
+		
+		var nodeCategoryHTML = document.createElement("h5");
+		var text3 = document.createTextNode("category "+nodeCategory);
+		nodeCategoryHTML.id="nodeCategory";
+		nodeCategoryHTML.appendChild(text3);
+		div.appendChild(nodeCategoryHTML);
 	});
 	
 	s.bind('clickStage', function(e) {
@@ -398,6 +398,9 @@ function powscale(){
 }
 
 function wiki_fr(){
+	
+	
+	
 	if (suffix == ""){
 		s.graph.nodes().forEach(function(n) {
 			n.label = n['label_fr'];
@@ -412,9 +415,16 @@ function wiki_fr(){
 		suffix = '';
 		
 	}
+	
 	if (currentNode != undefined){
-		document.querySelector("h5#nodeDate").innerHTML= "user activity on "+currentDate+": "+currentNode['user_activity'+suffix][current_activity_index][0];
+		if (currentNode['label_fr'] == 'unknown' && suffix=='_fr'){
+			s.dispatchEvent('clickStage');
+		} else{
+			document.querySelector("h5#nodeId").innerHTML= currentNode['label'];
+			document.querySelector("h5#nodeDate").innerHTML= "user activity on "+currentDate+": "+currentNode['user_activity'+suffix][current_activity_index][0];
+		}
 	}
+	
 	s.refresh();
 	
 }
