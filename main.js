@@ -163,12 +163,14 @@ function dataReady(){
 	document.querySelector("input#scaleChoice2").checked = false;
 	document.querySelector("input#scaleChoice1").checked = true;
 	document.querySelector("input#mean").checked = false;
+	document.querySelector("input#meanstd").checked = false;
 	document.querySelector("input#wiki_fr").checked = false;
 	//document.querySelector("input#scaleFactor").value = 1;
 	
 	document.querySelector("input#scaleChoice2").addEventListener("change",logscale);
 	document.querySelector("input#scaleChoice1").addEventListener("change",powscale);
   document.querySelector("input#mean").addEventListener("change",mean);
+  document.querySelector("input#meanstd").addEventListener("change",meanstd);
   document.querySelector("input#wiki_fr").addEventListener("change",wiki_fr);
   document.querySelector("button#timeline").addEventListener("click",timeline);
   //document.querySelector("input#scaleFactor").addEventListener("input",scaleFactor);
@@ -359,21 +361,64 @@ function logscale(){
 function mean(){
 	var b = this.checked
 	var regex = new RegExp('[0-9]+_size');
-
+	var regex_fr = new RegExp('fr');
+	
 	s.graph.nodes().forEach(function(n) {
 		for (var property in n) {
 			if(regex.test(property)){
-				if(b){
-					n[property] = n[property] - n['activity_mean'];
+				if (regex_fr.test(property)){
+					if(b){
+						n[property] = n[property] - n['activity_mean_fr'];
+					} else {
+						n[property] = n[property] + n['activity_mean_fr'];
+					}
 				} else {
-					n[property] = n[property] + n['activity_mean'];
+					if(b){
+						n[property] = n[property] - n['activity_mean'];
+					} else {
+						n[property] = n[property] + n['activity_mean'];
+					}
 				}
-			}
+			} 
 		}
 		if(b){		
-			n.size = n.size - n['activity_mean'];
+			n.size = n.size - n['activity_mean'+suffix];
 		} else {
-			n.size = n.size + n['activity_mean'];
+			n.size = n.size + n['activity_mean'+suffix];
+		}
+
+	});
+
+	s.refresh();
+}
+
+function meanstd(){
+	var b = this.checked
+	var regex = new RegExp('[0-9]+_size');
+	var regex_fr = new RegExp('_fr');
+	
+	s.graph.nodes().forEach(function(n) {
+		for (var property in n) {
+			if(regex.test(property)){
+				if (regex_fr.test(property)){
+					if(b){
+						n[property] = (n[property] - n['activity_mean_fr']) / n['activity_std_fr'];
+					} else {
+						n[property] = (n[property] * n['activity_std_fr']) + n['activity_mean_fr'];
+					}
+				} else {
+					if(b){
+						n[property] = (n[property] - n['activity_mean']) / n['activity_std'];
+					} else {
+						n[property] = (n[property] * n['activity_std']) + n['activity_mean'];
+					}
+				}
+			} 
+		}
+		if(b){		
+			n.size = (n.size - n['activity_mean'+suffix]) / n['activity_std'+suffix];
+		} else {
+			n.size = (n.size * n['activity_std'+suffix]) + n['activity_mean'+suffix];
 		}
 
 	});
@@ -398,8 +443,6 @@ function powscale(){
 }
 
 function wiki_fr(){
-	
-	
 	
 	if (suffix == ""){
 		s.graph.nodes().forEach(function(n) {
