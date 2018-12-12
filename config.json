@@ -1,0 +1,19 @@
+{
+  "data": "diseases_2depth_en_fr.json",
+  "settings": {
+    "defaultLabelColor": "#000",
+    "labelThreshold": 8,
+    "defaultHoverLabelBGColor": "#002147",
+    "hoverFontStyle": "bold",
+    "defaultLabelHoverColor": "#fff",
+    "fontStyle": "bold",
+    "defaultLabelSize": 14,
+    "maxEdgeSize": 0.05,
+    "minEdgeSize": 0.01,	
+	"minNodeSize": 0,
+    "maxNodeSize": 0,
+    "zoomMax": 20,
+    "zoomMin": 0.075,
+	"animationsTime": 2000
+  }
+}
