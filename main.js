@@ -30,7 +30,9 @@ function initSigma(config) {
   container: 'graph-container',
   renderer: {
     container: 'graph-container',
-    type: sigma.renderers.webGL
+    type: sigma.renderers.webGL,
+    nodesAlpha: 1.0,
+    edgesAlpha: 1.0,
   }
   });
   a.settings(config.settings);

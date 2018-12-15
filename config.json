@@ -13,7 +13,7 @@
 	"minNodeSize": 0,
     "maxNodeSize": 0,
     "zoomMax": 20,
-    "zoomMin": 0.075,
+    "zoomMin": 0.0025,
 	"animationsTime": 2000
   }
 }
