@@ -102,11 +102,11 @@ function showInfo(){
 		nodeDateHTML.appendChild(text2);
 		div.appendChild(nodeDateHTML);
 		
-		var nodeCategoryHTML = document.createElement("h5");
+		/* var nodeCategoryHTML = document.createElement("h5");
 		var text3 = document.createTextNode("category "+nodeCategory);
 		nodeCategoryHTML.id="nodeCategory";
 		nodeCategoryHTML.appendChild(text3);
-		div.appendChild(nodeCategoryHTML);
+		div.appendChild(nodeCategoryHTML); */
 	});
 	
 	s.bind('clickStage', function(e) {
@@ -147,7 +147,7 @@ function dataReady(){
 	}
 	
 
-	currentDate= dates[0].substring(0, 10);
+	currentDate= dates[0].substring(0, 7);
 	
 	
 	var slider_span = document.createElement("span");
@@ -232,44 +232,13 @@ function sliderFunc(){
 	);
 	
 	
-	currentDate= dates[val].substring(0, 10);
+	currentDate= dates[val].substring(0, 7);
 	slider_span.innerHTML= currentDate;
 	if (currentNode != undefined){
 		document.querySelector("h5#nodeDate").innerHTML= "user activity on "+currentDate+": "+currentNode['user_activity'+suffix][val][0];
 	}
 	s.refresh();
 }
-
-/* function scaleFactor(){
-	
-	var val = document.querySelector("input#scaleFactor").value;
-	document.querySelector("input#scaleFactor").disable = true;
-	document.querySelector("label#scaleFactorLabel").innerHTML = val+"x scale factor";
-	var fact = val-oldFactor;
-	
-	var regex = new RegExp('[0-9]+_size');
-	
-	s.graph.nodes().forEach(function(n) {
-		for (var property in n) {
-			if(regex.test(property)){
-				if (fact < 0){
-					n[property] = n[property] / (Math.abs(fact)+1);
-				} else if (fact > 0) {
-					n[property] = n[property] * (fact+1);
-				}
-			}
-		}
-		if (fact < 0){
-			n.size = n.size / (Math.abs(fact) +1);
-		} else {
-			n.size = n.size * (fact +1);
-		}
-
-	});
-	s.refresh(); 
-	oldFactor = val;
-	document.querySelector("input#scaleFactor").disable = false;
-} */
 
 var stop = true;
 async function timeline(){

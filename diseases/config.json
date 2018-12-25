@@ -2,7 +2,7 @@
   "data": "diseases_2depth_en_fr.json",
   "settings": {
     "defaultLabelColor": "#000",
-    "labelThreshold": 14,
+    "labelThreshold": 8,
     "defaultHoverLabelBGColor": "#002147",
     "hoverFontStyle": "bold",
     "defaultLabelHoverColor": "#fff",

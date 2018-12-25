@@ -8,8 +8,22 @@
 	<title>Wikipedia Interactive Visualisation</title>
 	<script src="./build/jquery.min.js" type="text/javascript"></script>
 	<script src="https://requirejs.org/docs/release/2.3.5/minified/require.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<meta name="author" content="Raphaël Madillo">
 </head>
 <style>
+
+body {
+	margin: 0;	
+	font-family: 'Open Sans', sans-serif;
+	width: 60%;
+	min-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	padding: 40x;
+	line-height: 1.7em;
+}
 
 div#vis-info{
 	display: flex;
@@ -17,14 +31,14 @@ div#vis-info{
 	height: 40%;
 }
 
-div.info-p{
+*/div.info-p{
 	width: 33%;
 	height: 40%;
 	border-style: solid;
 	margin: 5px 5px;
 	text-align: center;
 	padding: 10px;
-}
+}*/
 
 </style>
 <body>
@@ -35,44 +49,17 @@ div.info-p{
 
 <h4>Visualisation</h4>
 <p>
-Welcome to a temporal visualisation of wikipedia graph subparts. 
-In this page you will be able to visualize the user activity across multiple wikipedia page that have been regrouped under categories.
+Welcome to a temporal visualisation of wikipedia. 
+In this page you will be able to visualize the user activity across multiple wikipedia subpart.
 </p>
 
+<select id="choose_vis">
+  <option disabled selected value> -- select a visualisation -- </option>
+  <option value="diseases">Diseases</option>
+  <option value="science">Science</option>
+  <option value="XX_century">XX century</option>
+</select>
 <div id="vis-info">
-	<div id="diseases" class="info-p">
-		<p>This dataset is composed by every wikipedia pages that are at depth 2 from <a href="https://en.wikipedia.org/wiki/Category:Lists_of_diseases">disease</a> wikipedia page. <br />
-			<ul>
-				<li>Wikipedia pages: 1.385</li> 
-				<li>Hyperlinks: 20.460</li>
-			</ul>
-		</p>
-		<img src="./images/diseases_overview.png" width="60%" height="60%">
-		<br/>
-		<a href='./diseases/viz.html' rel='noopener noreferrer' target='_blank'>Visualise ! </a>
-	</div>
-	<div id="XX_century" class="info-p">
-		<p>This dataset is composed by every wikipedia pages that are at depth 2 from <a href="https://en.wikipedia.org/wiki/Category:20th_century">XX century</a> wikipedia page <br />
-			<ul>
-					<li>Wikipedia pages: 824</li>
-					<li>Hyperlinks: 11.320</li>
-			</ul>
-		</p>
-		<img src="./images/XX_century_overview.png" width="55%" height="55%">
-		<br/>
-		<a href='./XX_century/viz.html' rel='noopener noreferrer' target='_blank'>Visualise ! </a>
-	</div>
-	<div id="wikispedia" class="info-p">
-		<p>This dataset is composed by science pages that are part of <a href="https://snap.stanford.edu/data/wikispeedia.html">wikispedia</a> dataset <br />
-			<ul>
-				<li>Wikipedia pages: 1.097</li>
-				<li>Hyperlinks: 13.971</li>
-			</ul>			
-		</p>
-		<img src="./images/wikispedia_overview.png" width="50%" height="50%">
-		<br/>
-		<a href='./wikispedia/viz.html' rel='noopener noreferrer' target='_blank'>Visualise ! </a>
-	</div>
 </div>
 
 <h4>Data analysis</h4>
@@ -81,20 +68,45 @@ To further explore our datasets, we will try to analyse activity comportements o
 </p>
 <h5>Sanfillipo event</h5>
 <p>Let's first observe the activity of <a href="https://fr.wikipedia.org/wiki/Maladie_de_Sanfilippo">Maladie de Sanfilippo</a> in french wikipedia.</p>
-<img src="./images/sanfilippo.png"  width="60%" height="60%">
-<p style="display: inline-block;">We can see on this temporal analysis that the activity of Sanfilippo wikipedia page is 24 times higher on September 2018 than in average. </br>
+<center>
+<img src="./images/sanfilippo.png"  width="100%">
+</center>
+<p>We can see on this temporal analysis that the activity of Sanfilippo wikipedia page is 24 times higher on September 2018 than in average. </br>
 The explanation behind this very high sudden activity is that on September 17, a TV film <a href="https://fr.wikipedia.org/wiki/Tu_vivras_ma_fille">Tu vivras ma fille</a> was broadcasted by one of the main French TV broadcaster TF1,
 and that the main character had this disease. </p>
 
 <h5>1996 in music</h5>
 <p>Let's now take a look at english wikipedia page <a href="https://en.wikipedia.org/wiki/1996_in_music">1996 in music</a> where we also observe a peak of activity.</p>
-<img src="./images/1996_in_music.png"  width="60%" height="60%">
-<p style="display: inline-block;">From this activity analysis, we can see the activity of 1996_in_music page on January 2017 is of 5.447.653 views (34 times the average activity),</br>
+<center>
+<img src="./images/1996_in_music.png" width="100%">
+</center>
+<p style="display: inline-block;">From this activity analysis, we can see the activity of 1996_in_music page on January 2017 is of 5.447.653 views (34 times the average activity),
 so the phenomenon is simillar to Sanfilippo disease but here the explication is unknown.</br>
-One supposition is that because we are on english wikipedia interpretability is harder.
+It is the most viewed page (after wikipedia main page and wikipedia search page) in mid January, however doesn't appear on wikipedia trend page for mid february 
+<a href="https://en.wikipedia.org/wiki/Wikipedia:Top_25_Report/January_8_to_14,_2017">here</a> or <a href="https://en.wikipedia.org/wiki/Wikipedia:Top_25_Report/January_15_to_21,_2017">here</a>.</br>
+A possible reason why it doesn't appear on the trends is that the top 25 list excludes "articles that have almost no mobile views (5–6% or less) or almost all mobile views (94–95% or more) because they are very likely to be automated views based on our experience and research of the issue."</br>
+And when the page had 1.131.599 desktop views on 15 January 2017, it only had 224 views from mobile-web and 44 views from mobile-app.
 </p>
 
-
+<h5>Winter diseases</h5>
+<p>We can also observe expectable phenomenon like the augmentation of user views for the pages of diseases that often occure in winter.</br>
+ On French Wikipedia with <a href="https://fr.wikipedia.org/wiki/Angine">Angine</a> (Tonsillitis) and <a href="https://fr.wikipedia.org/wiki/Rhume">Rhume</a> (Common cold).</p>
+ <center>
+<img src="./images/winter_diseases.png" width="100%">
+</center>
+<p>However the analysis of same page on English Wikipedia is less relevant</p>
+ <center>
+<img src="./images/winter_diseases_en.png" width="100%">
+</center>
+<h5>Chipko movement</h5>
+<p>Another event that occured on end of march 2018 is the augmenting number of view on page <a href="https://en.wikipedia.org/wiki/Chipko_movement">Chipko mouvement</a> as the bar chart representing the activity on the page shows it.</p>
+<center>
+<img src="./images/chipko.png" width="100%">
+</center>
+<p>Or this is due to the Google doodle on March 26 that was related to the 45th anniversary of Chipko movement.</p>
+<h5>Futher exploration</h5>
+<p>To further explore, and discover the cause of an unexpected activity, you can use this website <a href="https://wikimedia.org/api/rest_v1/#!/Pageviews_data/">https://wikimedia.org/api/rest_v1/#!/Pageviews_data/</a> to get the daily activity of a page and see on what day we observed a peak of activity,
+and we can also use <a href="https://en.wikipedia.org/wiki/Wikipedia:Top_25_Report/">https://en.wikipedia.org/wiki/Wikipedia:Top_25_Report/</a>, if the page is in top 25 of page and it wasn't a DDos or automated views you will be able to find the causes here.</p>
 <script src="./script.js"></script>
   
 </body>

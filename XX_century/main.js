@@ -102,11 +102,11 @@ function showInfo(){
 		nodeDateHTML.appendChild(text2);
 		div.appendChild(nodeDateHTML);
 		
-		var nodeCategoryHTML = document.createElement("h5");
+		/* var nodeCategoryHTML = document.createElement("h5");
 		var text3 = document.createTextNode("category "+nodeCategory);
 		nodeCategoryHTML.id="nodeCategory";
 		nodeCategoryHTML.appendChild(text3);
-		div.appendChild(nodeCategoryHTML);
+		div.appendChild(nodeCategoryHTML); */
 	});
 	
 	s.bind('clickStage', function(e) {
@@ -147,7 +147,7 @@ function dataReady(){
 	}
 	
 
-	currentDate= dates[0].substring(0, 10);
+	currentDate= dates[0].substring(0, 7);
 	
 	
 	var slider_span = document.createElement("span");
@@ -232,7 +232,7 @@ function sliderFunc(){
 	);
 	
 	
-	currentDate= dates[val].substring(0, 10);
+	currentDate= dates[val].substring(0, 7);
 	slider_span.innerHTML= currentDate;
 	if (currentNode != undefined){
 		document.querySelector("h5#nodeDate").innerHTML= "user activity on "+currentDate+": "+currentNode['user_activity'+suffix][val][0];

@@ -147,7 +147,7 @@ function dataReady(){
 	}
 	
 
-	currentDate= dates[0].substring(0, 10);
+	currentDate= dates[0].substring(0, 7);
 	
 	
 	var slider_span = document.createElement("span");
@@ -232,7 +232,7 @@ function sliderFunc(){
 	);
 	
 	
-	currentDate= dates[val].substring(0, 10);
+	currentDate= dates[val].substring(0, 7);
 	slider_span.innerHTML= currentDate;
 	if (currentNode != undefined){
 		document.querySelector("h5#nodeDate").innerHTML= "user activity on "+currentDate+": "+currentNode['user_activity'+suffix][val][0];
