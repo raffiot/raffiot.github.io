@@ -24,12 +24,9 @@ body {
 	padding: 40x;
 	line-height: 1.7em;
 }
-
-div#vis-info{
+/* div#vis-info{
 	display: flex;
-	width: 100%;
-	height: 40%;
-}
+}*/
 
 */div.info-p{
 	width: 33%;
@@ -50,7 +47,9 @@ div#vis-info{
 <h4>Visualisation</h4>
 <p>
 Welcome to a temporal visualisation of wikipedia. 
-In this page you will be able to visualize the user activity across multiple wikipedia subpart.
+In this page you will be able to visualize the user activity across multiple wikipedia subpart.</br>
+These visualizations represent a Wikipedia sub-graph, the nodes being Wikipedia articles and the edges being Wikipedia hyperlinks between pages. </br>
+The different visualisation are dynamic with the node size representing the number of viewer of the page during a given month. The activity has been taken during 3 years from November 2015 to October 2018.
 </p>
 
 <select id="choose_vis">
@@ -60,6 +59,18 @@ In this page you will be able to visualize the user activity across multiple wik
   <option value="XX_century">XX century</option>
 </select>
 <div id="vis-info">
+<!-- <p>This dataset is composed by science pages that are part of <a href="https://snap.stanford.edu/data/wikispeedia.html">wikispedia</a> dataset <br />'
+ It includes both English and French wikipedia</p>
+<ul>
+<li>Wikipedia pages: 1.097</li>
+<li>Hyperlinks: 13.971</li>
+</ul>		
+<center>
+<img src="./images/wikispedia_overview.png">
+
+<br/>
+<a href='./wikispedia/viz.html' rel='noopener noreferrer' target='_blank'>Visualise</a>
+</center> -->
 </div>
 
 <h4>Data analysis</h4>
@@ -68,9 +79,9 @@ To further explore our datasets, we will try to analyse activity comportements o
 </p>
 <h5>Sanfillipo event</h5>
 <p>Let's first observe the activity of <a href="https://fr.wikipedia.org/wiki/Maladie_de_Sanfilippo">Maladie de Sanfilippo</a> in french wikipedia.</p>
-<center>
+
 <img src="./images/sanfilippo.png"  width="100%">
-</center>
+
 <p>We can see on this temporal analysis that the activity of Sanfilippo wikipedia page is 24 times higher on September 2018 than in average. </br>
 The explanation behind this very high sudden activity is that on September 17, a TV film <a href="https://fr.wikipedia.org/wiki/Tu_vivras_ma_fille">Tu vivras ma fille</a> was broadcasted by one of the main French TV broadcaster TF1,
 and that the main character had this disease. </p>
