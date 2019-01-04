@@ -84,8 +84,8 @@ function configNeighbors(){
 function showInfo(){
 	s.bind('clickNode', function(e) {
 		currentNode = e.data.node;
-		var nodeId = currentNode.id;
-		var nodeActivity = currentNode.user_activity[current_activity_index][0];
+		var nodeId = currentNode.label;
+		var nodeActivity = currentNode['user_activity'+suffix][current_activity_index][0];
 		var nodeCategory = e.data.node.attributes.category;
 		var div = document.querySelector("div#info");
 		div.innerHTML = '';
@@ -425,8 +425,7 @@ function wiki_fr(){
 			n.label = n['label_en'];
 			n.size = n[current_activity_index+'_size'];
 		});
-		suffix = '';
-		
+		suffix = '';		
 	}
 	
 	if (currentNode != undefined){
