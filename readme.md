@@ -5,7 +5,7 @@ The result is available at https://raffiot.github.io/<br />
 <br />
 
 Algorithmic part:<br />
-The jupyter notebook would work in an archive with the following setup<br />
+The jupyter notebook would work in a folder with the following setup<br />
 <br />
 <br />
 |<br />
