@@ -1,7 +1,8 @@
 Wikipedia Activity Analysis:
-This project is a tool to observe Wikipedia articles activity. 
+This project is a tool to observe Wikipedia articles activity.
 The algorithmic part is in python and the visualization part is in javascript.
 The result is available at https://raffiot.github.io/
+
 
 Algorithmic part:
 The jupyter notebook would work in an archive with the following setup
